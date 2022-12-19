@@ -1,0 +1,19 @@
+proc import out= sharks1
+datafile= "C:\Users\14246\Desktop\482 project CA dept fish&wildlife data .xlsx"
+dbms= xlsx replace;
+run; 
+
+proc import out= sharks2
+datafile= "C:\Users\14246\Desktop\enjoy OC shark data 482 project .xlsx"
+dbms= xlsx replace;
+run; 
+title 'Shark Attacks and Sightings' ; 
+
+
+proc sql number;
+select *
+from sharks1
+full join
+sharks2
+on sharks1.date=sharks2.date;
+quit;
